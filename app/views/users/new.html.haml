@@ -1,0 +1,15 @@
+%h1 Sign Up
+= simple_form_for @user, :html => {:multipart => true} do |f|
+  - if @user.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @user.errors.full_messages
+          %li= message
+  = f.input :name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :avatar, :as => :file, :label => 'Your avatar please'
+  = f.input :avatar_cache, :as => :hidden
+  .actions= f.submit

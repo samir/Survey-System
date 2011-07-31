@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %title SurveySystem
+    = stylesheet_link_tag "reset", "application"
+    = csrf_meta_tags
+  %body
+    #container
+
+      / Header
+      #header
+        = render "shared/session_box"
+        %h2 
+          = link_to raw("&#10000; Survey System &#10003;"), root_path
+
+      / Navigation
+      = render "shared/navigation"
+
+      / Content
+      #content
+
+        / Flash messages
+        - flash.each do |name, msg|
+          - if msg.is_a?(String)
+            %div{:id => "flash_message", :class => ["message","#{name}"]}
+              :textile
+                #{msg}
+
+        = yield
+
+      / Footer
+      #footer
+        %ul
+          %li= link_to "About", about_path
+          %li= link_to "Privacy", privacy_path
+          %li= link_to "Terms of Service", tos_path
+          %li= link_to "FAQ", faq_path
+          %li.last= link_to "Contact us", contact_path
+        %p
+          Survey System &copy; 2011
+    = javascript_include_tag "application"
+  

@@ -1,0 +1,8 @@
+%ul#nav
+  %li.first= link_to "Home", root_path
+  %li= link_to "Latest surveys", "#"
+  %li= link_to "All surveys", "#"
+  - if logged_in?
+    %li= link_to "My surveys", "#"
+    %li= link_to "My watchers", "#"
+    %li= link_to "Surveys i'm watching", "#"
