@@ -1,0 +1,139 @@
+// ----------------------------------------------------------------------------
+// General configuration
+
+$font_size: 15px
+$font_color: #333
+$font_family: Verdana, Arial, Helvetica, serif
+$hover_color: #0ff
+$border_color: #999
+$nav_border_color: #ccc
+// ----------------------------------------------------------------------------
+// Mixins 
+@mixin global-font
+  color: $font_color
+  font:
+    family: $font_family
+    size: $font_size
+
+// ----------------------------------------------------------------------------
+// General rules
+body
+  @include global-font
+  background: #f3f3f3
+
+a 
+  text-decoration: none
+  color: #600
+
+// ----------------------------------------------------------------------------
+
+#container
+  width: 960px
+  margin: 0 auto
+  padding: 0 30px
+  border-left: 1px solid $border_color
+  border-right: 1px solid $border_color
+  background: #fafafa
+  min-height: 1000px
+
+// ----------------------------------------------------------------------------
+
+#header
+  padding: 20px 0 30px 0
+  h2
+    font-size: 30px
+    font-family: Times
+  #logged_info
+    float: right
+    width: 300px
+    height: 30px
+    text-align: right
+    font-size: 13px
+    color: #333
+// ----------------------------------------------------------------------------
+
+ul#nav
+  display: block
+  margin: 0 0 20px 0
+  li
+    display: inline-block
+    margin-right: 4px
+    height: 25px
+    &.last
+      border: 0
+      margin-right: 0
+    &.first
+      a
+        margin: 0
+    a 
+      border-left: 1px solid $nav_border_color
+      border-top: 1px solid $nav_border_color
+      border-right: 1px solid darken($nav_border_color,20%)
+      border-bottom: 1px solid darken($nav_border_color,20%)
+      background: #ddd
+      font-size: 13px
+      line-height: 20px
+      height: 22px
+      padding: 0 20px
+      margin: 0 0 0 -4px
+      display: inline-block
+      &:hover
+        background: #e4e4e4
+// ----------------------------------------------------------------------------
+
+#footer
+  font-size: 12px
+  margin: 10px 0
+  padding: 10px 0
+  border-top: 1px solid $border_color
+  p
+    text-align:  center
+  ul
+    display: block
+    text-align: center
+    margin-bottom: 5px
+    li
+      display: inline-block
+      padding: 0 5px 0 10px
+      border-right: 1px solid $border_color
+      &.last
+        border: 0
+      a 
+        display: block
+
+// ----------------------------------------------------------------------------
+// Flash messages
+
+.message
+  border-top: 1px solid $border_color
+  border-bottom: 1px solid $border_color
+  padding: 10px
+  text-align: center
+  margin: 20px 0
+  background-color: #eee
+  background-repeat: no-repeat 
+  background-position: center 10px
+  p
+    //display: inline
+    //padding-left: 20px
+
+  &.warning
+    background-color: #ffc
+    color: #660
+    border-color: #660
+    a
+      color: darken(#660,20%)
+
+  &.error
+    background-color: #fdd
+    color: #933
+    border-color: #933
+    a
+      color: darken(#933,20%)
+
+  &.notice
+    background-color: #dfd
+    color: #393
+    border-color: #393
+    a
+      color: darken(#393,20%)
