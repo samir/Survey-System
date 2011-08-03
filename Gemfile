@@ -12,9 +12,10 @@ gem 'carrierwave'
 gem "rmagick"
 
 gem 'simple_form'
-gem "cancan"
 gem 'haml'
 gem 'haml-rails', :group => :development
+
+gem "responders"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,7 +43,5 @@ group :development do
   gem "hirb"
   gem "awesome_print"
   gem "syntax"
-  # gem "map_by_method"
-  # gem "what_methods"
   gem 'spork', '~> 0.9.0.rc'
 end
