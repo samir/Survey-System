@@ -1,1 +1,8 @@
 %h1 Who is watching my surveys
+
+- @watchers.each do |watcher|
+  
+  - if watcher.user.avatar?
+    = image_tag watcher.user.avatar.thumb_small.url
+  = link_to watcher.user.name, user_path(watcher.user)
+  %br

@@ -1,25 +1,33 @@
 %table.list_surveys
-  %col{:width => 100}
-  %col{:width => 230}
+  %col{:width => 40}
   %col{:width => nil}
-  %col{:width => 100}
-  %col{:width => 100}
+  %col{:width => 130}
   %col{:width => 70}
+  - if logged_in?
+    %col{:width => 90}
   %thead
     %tr
       %th Author
-      %th Date
-      %th Survey
-      %th Questions
-      %th Watchers
+      %th Title
+      %th Published
       %th &nbsp;
+      - if logged_in?
+        %th &nbsp;
   %tbody
     - @surveys.each do |survey|
       %tr
-        %td= link_to survey.user.name, user_path(survey.user)
-        %td= time_ago_in_words(survey.created_at)
-        %td= survey.title
-        %td= survey.questions.size
-        %td N/A
+        %td.thumb_list= link_to(image_tag(survey.user.avatar.thumb_small.url, {:title => survey.user.name}), user_path(survey.user))
         %td
-          = link_to "Show", survey_path(survey)
+          = survey.title
+          %span.info_small
+            Questions: #{survey.questions.size}
+            \|
+            Watchers: #{survey.watchers.size}
+        %td= time_ago_in_words(survey.created_at)
+        %td= link_to "View", survey_path(survey)
+        - if logged_in?
+          %td
+            - if current_user.survey_ids.include? survey.id
+              Your survey
+            - else
+              = watch_button(survey, (current_user.watching.include? survey.id) ? "Unwatch" : "Watch") 

@@ -1,13 +1,20 @@
-%h1= @user.name
+%h1 User
 
+= image_tag @user.avatar.thumb.url, {:class =>"thumb"}
 %p
+  %strong= @user.name
+  %br
   = @user.email
-  
-%h4 Public Surveys
+
+.clear
+
+%h3 Public Surveys
 - @user.surveys.each do |survey|
   - if survey.is_public?
-    = survey.title 
+    %h4= survey.title
     = survey.description
-    = link_to "view survey", user_survey_path(@user, survey)
+    %br 
+    = link_to raw("&raquo; View"), user_survey_path(@user, survey)
     %br
+    %br 
   
