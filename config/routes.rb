@@ -21,13 +21,15 @@ SurveySystem::Application.routes.draw do
   get "surveys/latest"
   get "surveys/public"
   get "surveys/watching"
+  get "surveys/answers/:id" => "surveys#answers", :as => "answers"
   post "surveys/set_watching"
   resources :surveys
 
   # Users routes
   get "users/watchers" => "users#watchers"
   resources :users do 
-    get "surveys/:id"  => 'users/surveys#show', :as => "survey"
+    get "surveys/:id"         => 'users/surveys#show',   :as => "survey"
+    match "surveys/:id/answer"  => 'users/surveys#answer', :as => "survey_answer", :via => [:get, :post]
   end
 
   root :to => "home#index"

@@ -5,3 +5,4 @@ tmp/
 .sass-cache/
 public/uploads/**/*
 doc/README_FOR_APP
+.rvmrc

@@ -7,7 +7,6 @@ gem 'rails', '3.1.0.rc5'
 
 gem 'sqlite3'
 gem 'RedCloth', '>= 4.1.1'
-
 gem 'carrierwave'
 gem "rmagick"
 
@@ -35,6 +34,7 @@ group :test do
   gem "launchy"
   gem "guard-rspec"
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :development do
