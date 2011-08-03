@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   # Relationship
   has_many :surveys
+  has_many :watchers, :dependent => :destroy
   
   # Accessors
   mount_uploader :avatar, AvatarUploader
@@ -21,6 +22,10 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+  end
+
+  def watching
+    self.watchers.map{|item| item.survey_id}
   end
 
 end

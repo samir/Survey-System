@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110729025609) do
+ActiveRecord::Schema.define(:version => 20110803013327) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -48,5 +48,12 @@ ActiveRecord::Schema.define(:version => 20110729025609) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["password_digest"], :name => "index_users_on_password_digest", :unique => true
+
+  create_table "watchers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

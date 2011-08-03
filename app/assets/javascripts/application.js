@@ -19,8 +19,8 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-function change_watching_status(status, text){
-  $("#button_watch a").html(text);
+function change_watching_status(id, status, text){
+  $("a#watch_link_"+id).html(text);
   if (status == 0) { 
     $("#button_watch").addClass("on");
   } else {
