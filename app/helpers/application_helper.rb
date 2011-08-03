@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def watch_button(object, text = 'Watch')
-    link_to text, { :controller=>"surveys", :action => "set_watching", :id => object[:id], :_ => rand }, {:remote => true, :id => "watch_link_#{object[:id]}", :method => :post} #, :class => [object[field_name.to_sym] ? 'tick' : 'cross']}
+    link_to "#{text}", { :controller=>"/surveys", :action => "set_watching", :id => object[:id], :_ => rand }, {:remote => true, :id => "watch_link_#{object[:id]}", :method => :post}
   end
 
 end
