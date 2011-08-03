@@ -1,10 +1,10 @@
 %table.list_surveys
   %col{:width => 40}
   %col{:width => nil}
-  %col{:width => 130}
+  %col{:width => 170}
   %col{:width => 70}
   - if logged_in?
-    %col{:width => 90}
+    %col{:width => 100}
   %thead
     %tr
       %th Author
@@ -20,9 +20,9 @@
         %td
           = survey.title
           %span.info_small
-            Questions: #{survey.questions.size}
+            Questions: #{survey.questions.count}
             \|
-            Watchers: #{survey.watchers.size}
+            Watchers: #{survey.watchers.count}
         %td= time_ago_in_words(survey.created_at)
         %td= link_to "View", survey_path(survey)
         - if logged_in?

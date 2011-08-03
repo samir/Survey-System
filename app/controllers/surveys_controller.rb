@@ -53,7 +53,7 @@ class SurveysController < ApplicationController
   def destroy
     @survey = Survey.find(params[:id])
     @survey.destroy
-    responde_with @survey
+    respond_with @survey
   end
   
   def watching

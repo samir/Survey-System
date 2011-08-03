@@ -17,7 +17,7 @@
     - @surveys.each do |survey|
       %tr
         %td= survey.title
-        %td 0
+        %td= survey.watchers.count
         %td= survey.is_public? ? "yes": "no"
         %td= survey.is_active? ? "yes": "no"
         %td
