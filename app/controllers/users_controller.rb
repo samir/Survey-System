@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+  
   def watchers
+    @watchers = Watcher.joins(:survey, :user).where("surveys.user_id = ?", current_user.id).group("watchers.user_id")
   end
   
 end

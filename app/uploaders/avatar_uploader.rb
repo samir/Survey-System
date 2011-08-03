@@ -13,7 +13,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
   
   version :thumb_small do
-    process :resize_to_fill => [60,60]
+    process :resize_to_fill => [40,40]
   end
 
   # Override the filename of the uploaded files:
