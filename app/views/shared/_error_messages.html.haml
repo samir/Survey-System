@@ -1,0 +1,6 @@
+- if obj.errors.any?
+  .error_messages
+    %h2 Form is invalid
+    %ul
+      - for message in obj.errors.full_messages
+        %li= message

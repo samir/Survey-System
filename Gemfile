@@ -31,5 +31,18 @@ group :test do
   gem "shoulda-matchers"
   gem "factory_girl_rails"
   gem "capybara"
+  gem "launchy"
   gem "guard-rspec"
+  gem 'database_cleaner'
+end
+
+group :development do
+  gem "looksee"
+  gem "wirble"
+  gem "hirb"
+  gem "awesome_print"
+  gem "syntax"
+  # gem "map_by_method"
+  # gem "what_methods"
+  gem 'spork', '~> 0.9.0.rc'
 end

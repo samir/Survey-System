@@ -5,16 +5,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   storage :file
 
-  # process :resize_to_fit => [800, 800]
-  # process :convert => 'png'
-  # 
-  # version :thumb do
-  #   process :resize_to_fill => [200,200]
-  # end
-  # 
-  # version :thumb_small do
-  #   process :resize_to_fill => [60,60]
-  # end
+  process :resize_to_fit => [800, 800]
+  process :convert => 'png'
+  
+  version :thumb do
+    process :resize_to_fill => [200,200]
+  end
+  
+  version :thumb_small do
+    process :resize_to_fill => [60,60]
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

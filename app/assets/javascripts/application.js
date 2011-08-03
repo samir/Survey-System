@@ -7,3 +7,27 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
+}
+
+function change_watching_status(status, text){
+  $("#button_watch a").html(text);
+  if (status == 0) { 
+    $("#button_watch").addClass("on");
+  } else {
+    $("#button_watch").removeClass("on");
+  }
+}
+
+$(document).ready(function(){
+  
+});

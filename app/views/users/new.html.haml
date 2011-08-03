@@ -1,11 +1,6 @@
 %h1 Sign Up
 = simple_form_for @user, :html => {:multipart => true} do |f|
-  - if @user.errors.any?
-    .error_messages
-      %h2 Form is invalid
-      %ul
-        - for message in @user.errors.full_messages
-          %li= message
+  = error_messages @user
   = f.input :name
   = f.input :email
   = f.input :password

@@ -10,14 +10,16 @@ $nav_border_color: #ccc
 
 // ----------------------------------------------------------------------------
 // Mixins 
-@mixin global-font
+@mixin global-font 
   color: $font_color
   font:
     family: $font_family
     size: $font_size
 
+
 // ----------------------------------------------------------------------------
 // General rules
+
 body
   @include global-font
   background: #f3f3f3
@@ -25,6 +27,10 @@ body
 a 
   text-decoration: none
   color: #600
+
+strong
+  font-weight: 700
+
 
 // ----------------------------------------------------------------------------
 
@@ -84,6 +90,17 @@ ul#nav
       &:hover
         background: #e4e4e4
 
+ul#in_nav
+  display: block
+  margin-top: 10px
+  li
+    display: inline-block
+    border-right: 1px solid #ccc
+    padding: 0 10px 0 5px
+    &.first
+      padding-left: 0
+    &.last
+      border-right: 0
 
 // ----------------------------------------------------------------------------
 
@@ -124,7 +141,7 @@ ul#nav
     //display: inline
     //padding-left: 20px
     
-  &.warning
+  &.alert
     background-color: #ffc
     color: #660
     border-color: #660
@@ -162,10 +179,10 @@ ul#nav
     
   .error
     clear:   left
-    color:   black
     display: block
-    margin-left: 120px
+    margin-left: 210px
     font-size:    12px
+    color: #a00
     
   .hint
     clear: left
@@ -188,8 +205,15 @@ ul#nav
     margin-left:   2px
     
   .field_with_errors
-    background-color: #ff3333
-    
+    color: #f33
+    input.string
+      border: 1px solid #a00
+  
+  input.string
+    border: 1px solid #000
+    width: 400px
+    padding: 3px
+  
   input.radio
     margin-right: 5px
     vertical-align: -3px
@@ -203,3 +227,78 @@ ul#nav
     margin: 0
     vertical-align: -2px
     margin-left:   2px
+
+.error_messages
+  margin: 30px 0 20px 210px 
+  border: 1px solid #c00
+  background-color: #fee
+  width: 616px
+  h2
+    font-weight: bold
+    text-indent: 20px
+    font-size: 14px
+    background-color: #fcc
+    color: #fff
+    border-bottom: 0
+  p
+    margin: 10px
+  ul
+    margin: 10px
+    li
+      font-size: 12px
+      list-style: disc
+      list-style-position: inside
+
+
+.clear
+  clear: both
+  display: block
+  overflow: hidden
+  visibility: hidden
+  width: 0
+  height: 0
+
+.clearfix
+  zoom: 1
+  &:before
+    content: "\0020"
+    display: block
+    overflow: hidden
+    visibility: hidden
+    width: 0
+    height: 0
+  &:after
+    content: "\0020"
+    display: block
+    overflow: hidden
+    visibility: hidden
+    width: 0
+    height: 0
+    clear: both
+    
+    
+#button_watch
+  background: #f2f2f2
+  min-width: 70px
+  padding-right: 10px
+  height: 30px
+  float: right
+  border: 1px solid #ccc
+  border-radius: 10px
+  color: #666
+  -moz-border-radius: 10px
+  -webkit-border-radius: 10px
+  line-height: 27px
+  span
+    display: block
+    float: left
+    width: 16px
+    height: 16px
+    margin: 7px
+    background:  url(/assets/icons/eye.png)
+  &.on
+    span
+      background:  url(/assets/icons/eye-half.png)
+    &:hover
+      span
+        background:  url(/assets/icons/eye-close.png)

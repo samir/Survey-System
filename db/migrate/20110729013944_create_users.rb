@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :name, :limit => 127
+      t.string :name,  :limit => 127
       t.string :email, :limit => 127
       t.string :avatar
       t.string :password_digest

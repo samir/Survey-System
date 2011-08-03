@@ -13,19 +13,25 @@
 ActiveRecord::Schema.define(:version => 20110729025609) do
 
   create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "content",     :limit => 127
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "questions", :force => true do |t|
-    t.string   "description"
+    t.integer  "survey_id"
+    t.string   "content",    :limit => 511
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "surveys", :force => true do |t|
+    t.integer  "user_id"
     t.string   "title"
-    t.string   "description"
+    t.string   "description", :limit => 511
+    t.boolean  "is_active",                  :default => false
+    t.boolean  "is_public",                  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

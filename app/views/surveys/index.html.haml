@@ -1,0 +1,26 @@
+%h1 My Surveys
+
+%table.list_surveys
+  %col{:width => nil}
+  %col{:width => 100}
+  %col{:width => 60}
+  %col{:width => 60}
+  %col{:width => 140}
+  %thead
+    %tr
+      %th Title
+      %th Watchers
+      %th Public
+      %th Active
+      %th Actions
+  %tbody
+    - @surveys.each do |survey|
+      %tr
+        %td= survey.title
+        %td 0
+        %td= survey.is_public? ? "yes": "no"
+        %td= survey.is_active? ? "yes": "no"
+        %td
+          = link_to "Show", survey_path(survey)
+          = link_to "Edit", edit_survey_path(survey)
+          = link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,33 @@
+%h2 Show survey 
+
+%div#show_survey
+  
+  #button_watch.on
+    %span
+    = watch_button(@survey, "Unwatch")
+
+  %p
+    This survey is 
+    %strong= (@survey.is_active?) ? "active" : "inactive" 
+    and have 
+    %strong= (@survey.is_public?) ? "public" : "private"
+    access
+  
+  %h3= @survey.title
+
+  %p
+    %strong About
+    %br
+    = @survey.description
+  
+  %h4 Questions
+  %ol
+    - @survey.questions.each do |question|
+      %li
+        %strong= question.content
+        %ul
+          - question.answers.each do |answer|
+            %li= h answer.content
+
+- if logged_in? and current_user.id == @survey.user_id
+  = render "surveys/navigation"

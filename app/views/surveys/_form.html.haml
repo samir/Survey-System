@@ -1,0 +1,14 @@
+= simple_form_for @survey do |f|
+  = error_messages @survey
+  = f.input :title
+  = f.input :description, :as => :text
+  = f.input :is_active
+  = f.input :is_public
+  %h3 Questions
+  #questions
+    %br
+    = f.simple_fields_for :questions do |builder|
+      = render "question_fields", :f => builder
+    .clearfix
+    %p= link_to_add_fields "Add Question", f, :questions
+  %p= f.submit "Submit"

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authorize_access, :except => [:new, :create]
   def new
     @user = User.new
   end
@@ -7,9 +8,16 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       @user.authenticate(params[:password])
-      redirect_to root_url, :notice => "Signed up!"
+      cookies[:auth_token] = @user.auth_token
+      redirect_to root_url, :notice => "Signed up and logged in!"
     else
       render "new"
     end
   end
+  def show
+    @user = User.find(params[:id])
+  end
+  def watchers
+  end
+  
 end

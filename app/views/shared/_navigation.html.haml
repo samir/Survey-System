@@ -1,9 +1,9 @@
 %ul#nav
   %li.first= link_to "Home", root_path
-  %li= link_to "Latest surveys", "#"
-  %li= link_to "All surveys", "#"
+  %li= link_to "Latest surveys", surveys_latest_path
+  %li= link_to "Public surveys", surveys_public_path
   - if logged_in?
-    %li= link_to "My surveys", "#"
-    %li= link_to "My watchers", "#"
-    %li= link_to "Surveys i'm watching", "#"
-    %li= link_to "Add survey", "#"
+    %li= link_to "Surveys I'm watching", surveys_watching_path
+    %li= link_to "My surveys", surveys_path
+    %li= link_to "My watchers", users_watchers_path
+    %li= link_to "Add survey", new_survey_path

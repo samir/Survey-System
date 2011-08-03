@@ -1,0 +1,6 @@
+%ul#in_nav
+  %li.first= link_to "Last 7 days", surveys_latest_path(:last => 7)
+  %li= link_to "Last 30 days", surveys_latest_path(:last => 30)
+  %li= link_to "Last 60 days", surveys_latest_path(:last => 60)
+  %li= link_to "Last year", surveys_latest_path(:last => 365)
+  %li.last= link_to "All", surveys_public_path

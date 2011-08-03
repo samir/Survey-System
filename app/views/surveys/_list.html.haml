@@ -1,0 +1,25 @@
+%table.list_surveys
+  %col{:width => 100}
+  %col{:width => 230}
+  %col{:width => nil}
+  %col{:width => 100}
+  %col{:width => 100}
+  %col{:width => 70}
+  %thead
+    %tr
+      %th Author
+      %th Date
+      %th Survey
+      %th Questions
+      %th Watchers
+      %th &nbsp;
+  %tbody
+    - @surveys.each do |survey|
+      %tr
+        %td= link_to survey.user.name, user_path(survey.user)
+        %td= time_ago_in_words(survey.created_at)
+        %td= survey.title
+        %td= survey.questions.size
+        %td N/A
+        %td
+          = link_to "Show", survey_path(survey)

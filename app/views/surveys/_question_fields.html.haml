@@ -1,0 +1,9 @@
+.fields.questions_fields
+  = f.input :content, :label => "Question", :input_html => {:class => "question_input"}
+  = link_to_remove_fields "remove question", f
+  %h4 Alternatives
+  #alternatives
+    .fields.answers_fields
+      = f.simple_fields_for :answers do |builder|
+        = render "answer_fields", :f => builder
+      %p.link_add= link_to_add_fields "Add alternative answer", f, :answers
