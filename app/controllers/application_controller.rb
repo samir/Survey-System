@@ -1,6 +1,11 @@
+require "application_responder"
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user, :authorize_access, :logged_in?
+
+  self.responder = ApplicationResponder
+  respond_to :html
+
   private
 
   def current_user
