@@ -44,14 +44,14 @@ ActiveRecord::Base.connection.execute("VACUUM")
 
 puts "=" * 80
 puts "Creating users"
-users = User.create!([{:id => 1, :name => "User #1", :email => "user1@example.com", :password => "123"},
-                      {:id => 2, :name => "User #2", :email => "user2@example.com", :password => "123"},
-                      {:id => 3, :name => "User #3", :email => "user3@example.com", :password => "123"}])
+users = User.create!([{:name => "User #1", :email => "user1@example.com", :password => "123", :avatar => File.open("#{Rails.root}/tmp/seed/user1.jpg")},
+                      {:name => "User #2", :email => "user2@example.com", :password => "123", :avatar => File.open("#{Rails.root}/tmp/seed/user2.jpg")},
+                      {:name => "User #3", :email => "user3@example.com", :password => "123", :avatar => File.open("#{Rails.root}/tmp/seed/user3.jpg")}])
 
 surveys = []
 puts "Creating surveys"
 f = 0
-users.each_with_index do |user, i|
+users.each do |user|
   f = f + 1; surveys << Survey.create!(:user => user, :title => "Survey #{f}", :description => txt_description[f%3], :is_active => true, :is_public => true)
   f = f + 1; surveys << Survey.create!(:user => user, :title => "Survey #{f}", :description => txt_description[f%3], :is_active => true, :is_public => true)
   f = f + 1; surveys << Survey.create!(:user => user, :title => "Survey #{f}", :description => txt_description[f%3], :is_active => true, :is_public => true)
