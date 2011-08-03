@@ -37,13 +37,29 @@ describe "Surveys" do
       
       fill_in "Title", :with => "Title of Survey"
       fill_in "Description", :with => "Long description of survey"
+
+      fill_in "survey[questions_attributes][0][content]", :with => "Q1"
+      fill_in "survey[questions_attributes][0][answers_attributes][0][content]", :with => "Q1A1"
+      fill_in "survey[questions_attributes][0][answers_attributes][1][content]", :with => "Q1A2"
+      fill_in "survey[questions_attributes][0][answers_attributes][2][content]", :with => "Q1A3"
+      fill_in "survey[questions_attributes][0][answers_attributes][3][content]", :with => "Q1A4"
+      
+      fill_in "survey[questions_attributes][1][content]", :with => "Q2"
+      fill_in "survey[questions_attributes][1][answers_attributes][0][content]", :with => "Q2A1"
+      fill_in "survey[questions_attributes][1][answers_attributes][1][content]", :with => "Q2A2"
+      fill_in "survey[questions_attributes][1][answers_attributes][2][content]", :with => "Q2A3"
+      fill_in "survey[questions_attributes][1][answers_attributes][3][content]", :with => "Q2A4"
       
       click_button "Submit"
 
-      page.should have_content("Successfully created survey.")
+      page.should have_content("Survey was successfully created.")
+
       page.should have_content("Show survey")
+
       page.should have_content("Title of Survey")
       page.should have_content("Long description of survey")
+      page.should have_content("Q1A1")
+      page.should have_content("Q2A4")
 
     end
   end

@@ -7,7 +7,7 @@ class Survey < ActiveRecord::Base
   has_many :watchers, :dependent => :destroy
 
   # Accessors
-  attr_accessible :title, :description, :is_active, :is_public, :user
+  attr_accessible :title, :description, :is_active, :is_public, :user, :questions_attributes
 
   # Validations
   validates_presence_of :title
