@@ -5,7 +5,8 @@ class Survey < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
   has_many :watchers, :dependent => :destroy
-
+  has_many :user_answers
+  
   # Accessors
   attr_accessible :title, :description, :is_active, :is_public, :user, :questions_attributes
 

@@ -1,0 +1,17 @@
+%h1 Answers
+
+
+- @users.each do |user|
+  %h3 #{user.name}
+  %p
+    %em #{user.email}
+  = image_tag user.avatar.thumb.url, {:class => "thumb"}
+  - @survey.questions.each do |question|
+    %p
+      %strong= question.content
+      %br
+      - user.user_answers.each do |user_answer|
+        = user_answer.answer.content if user_answer.question_id == question.id
+      
+    %br
+  .clearfix

@@ -1,0 +1,39 @@
+%h2 Answer survey 
+
+
+%div#show_survey
+
+  - if !@user_answer.empty?
+    You answered this survey. See it below
+
+    %h4 Questions
+    %ol
+      - @survey.questions.each do |question|
+        %li
+          %strong #{question.content}
+          %p
+            - @user_answer.each do |a|
+              = a.content if a.question_id == question.id
+  - else
+
+    %h3= @survey.title
+
+    %p
+      %strong About
+      %br
+      = @survey.description
+
+    = simple_form_for "answer" do |f|
+      = f.input :action, :input_html => {:value => "post"}, :as => :hidden
+
+      %h4 Questions
+      %ol
+        - @survey.questions.each do |question|
+          %li
+            %strong #{question.content}
+          
+            %br
+            = f.collection_radio "options[#{question.id}]", question.answers, :id, :content
+        %button Submit
+
+  = link_to "Voltar", user_survey_path(@survey.user, @survey)

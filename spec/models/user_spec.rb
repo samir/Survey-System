@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before :each do
-    @user = Factory(:user)
+    @user = User.create!({:name => "User #1", :email => "user1@example.com", :password => 123})
   end
 
   context "requirements" do
@@ -22,11 +22,10 @@ describe User do
     # it { should validate_uniqueness_of(:email).case_insensitive }
   end
 
-  describe "the signup process", :type => :request do
+  describe "The signup process", :type => :request do
     before :each do
       User.create!(:name => "User", :email => 'user@example.com', :password => 'caplin')
     end
-
     it "signs me in" do
       visit login_path
       fill_in 'Email', :with => 'user@example.com'
@@ -35,16 +34,19 @@ describe User do
     end
   end
 
-  describe "" do
-    let(:user) { Factory(:user) }
+  describe "Behaviour" do
 
-    it "generates a unique password_reset_token each time" do
+    it "should be an User object" do
+      @user.should be_instance_of(User)
     end
 
-    it "saves the time the password reset was sent" do
+    it "should save auth token with exact characters length" do
+      @user[:auth_token].length.should == 22
+    end
+    
+    it "should return survey_id's array that user is watching" do
+      @user.watching.should be_an(Array)
     end
 
-    it "delivers email to user" do
-    end
   end
 end

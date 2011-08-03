@@ -15,13 +15,7 @@ class SurveysController < ApplicationController
   # Show survey
   def show
     @survey = Survey.find(params[:id])
-    if current_user.id != params[:id] and current_user.watching.include? @survey.id
-      @text = "Unwatch"
-      @class = "on"
-    else
-      @text = "Watch"
-      @class = nil
-    end
+    status_watch(@survey)
   end
   
   def new
@@ -67,6 +61,11 @@ class SurveysController < ApplicationController
 
   def public
     @surveys = Survey.where(:is_public => true)
+  end
+  
+  def answers
+    @survey = Survey.find(params[:id])
+    @users = User.joins(:user_answers).where("user_answers.survey_id = ? ", params[:id]).group("user_answers.user_id")
   end
   
   def set_watching

@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
   
   has_secure_password
-  before_create { generate_token(:auth_token) }
+  before_create { generate_token }
 
   # Relationship
   has_many :surveys
   has_many :watchers, :dependent => :destroy
+  has_many :user_answers
   
   # Accessors
   mount_uploader :avatar, AvatarUploader
@@ -18,10 +19,8 @@ class User < ActiveRecord::Base
   validates_length_of :email, :in => 1..127
   validates_uniqueness_of :email
   
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
+  def generate_token
+    self[:auth_token] = SecureRandom.urlsafe_base64
   end
 
   def watching

@@ -78,6 +78,17 @@ questions.each_with_index do |question,i|
                              {:question => question, :content => txt_answer[f%8][3]}])
 end
 
+puts "Creating watchers lists"
+Watcher.create!([{:user_id => 2, :survey_id => 1},
+                 {:user_id => 2, :survey_id => 2},
+                 {:user_id => 3, :survey_id => 3},
+                 {:user_id => 3, :survey_id => 4},
+                 {:user_id => 3, :survey_id => 5},
+                 {:user_id => 1, :survey_id => 6},
+                 {:user_id => 1, :survey_id => 7},
+                 {:user_id => 1, :survey_id => 8},
+                 {:user_id => 2, :survey_id => 9}])
+
 
 puts "=" * 80
 

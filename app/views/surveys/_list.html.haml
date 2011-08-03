@@ -24,7 +24,7 @@
             \|
             Watchers: #{survey.watchers.count}
         %td= time_ago_in_words(survey.created_at)
-        %td= link_to "View", survey_path(survey)
+        %td= link_to "View", user_survey_path(survey.user, survey)
         - if logged_in?
           %td
             - if current_user.survey_ids.include? survey.id
