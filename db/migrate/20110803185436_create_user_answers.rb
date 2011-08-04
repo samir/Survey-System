@@ -12,5 +12,6 @@ class CreateUserAnswers < ActiveRecord::Migration
     add_index :user_answers, :user_id
     add_index :user_answers, :survey_id
     add_index :user_answers, :question_id
+    add_index :user_answers, :answer_id
   end
 end

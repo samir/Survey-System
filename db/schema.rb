@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20110803185436) do
     t.integer  "survey_id"
     t.integer  "question_id"
     t.integer  "answer_id"
-    t.integer  "choose"
+    t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
