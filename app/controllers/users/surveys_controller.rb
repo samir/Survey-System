@@ -1,5 +1,7 @@
 class Users::SurveysController < ApplicationController
 
+  before_filter :authorize_access, :except => [:show]
+
   def show
     @survey = Survey.where(:is_active => true, :is_public => true, :user_id => params[:user_id], :id => params[:id]).first
     status_watch(@survey)

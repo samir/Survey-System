@@ -33,7 +33,7 @@
           - question.answers.each do |answer|
             %li= h answer.content
 
-  = link_to "Answer this survey", user_survey_answer_path(@survey.user, @survey)
+  = link_to "Answer this survey", user_survey_answer_path(@survey.user, @survey) if logged_in?
 
 - if logged_in? and current_user.id == @survey.user_id
   = render "surveys/navigation"
