@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
-  pending "#link_to_add_fields" 
-  # describe "#link_to_add_fields" do
-  #   it "should return set of tags to add group of nested fields" do
-  #     @survey = Survey.new
-  #     helper.simple_form_for @survey do |f|
-  #       content = helper.link_to_add_fields("Remove", f, :questions)
-  #       content.should == 'x'
-  #     end
-  #   end
-  # end
+  # pending "#link_to_add_fields" 
+  describe "#link_to_add_fields" do
+    it "should return set of tags to add group of nested fields" do
+      @survey = Survey.new
+      helper.simple_form_for @survey do |f|
+        content = helper.link_to_add_fields("Remove", f, :questions)
+        content.should =~ /<a class=\"add_link\" href=\"#\" onclick=\"add_fields\(this,/
+        content.should =~ /Remove<\/a>/
+      end
+    end
+  end
 
   describe "#link_to_remove_fields" do
     it "should return set of tags to remove group of nested fields" do
