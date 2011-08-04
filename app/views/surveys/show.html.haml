@@ -3,13 +3,12 @@
 %div#show_survey
 
   -# Not need to show "Watch Button" to survey's owner
-  - if current_user.id != @survey.user_id
-    #button_watch{:class => @class}
-      - if logged_in?
-        %span
-        = watch_button(@survey, @text)
-      - else
-        login to watch this survey
+  #button_watch{:class => @class}
+    %span
+    - if logged_in?
+      = watch_button(@survey, @text)
+    - else
+      login to watch this survey
 
   %p
     This survey is 

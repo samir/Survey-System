@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def status_watch(object)
-    if current_user.id != object.id and current_user.watching.include? object.id
+    if current_user and current_user.id != object.id and current_user.watching.include? object.id
       @text = "Unwatch"
       @class = "on"
     else
