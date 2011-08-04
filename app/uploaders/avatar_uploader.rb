@@ -4,14 +4,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   storage :file
-
-  process :resize_to_fit => [800, 800]
-  process :convert => 'png'
   
+  # Keep original file size
+  # process :resize_to_fit => [800, 800]
+  # process :convert => 'png'
+  
+  # Set two versions of image size, based on layout specification
   version :thumb do
     process :resize_to_fill => [200,200]
   end
-  
   version :thumb_small do
     process :resize_to_fill => [40,40]
   end
