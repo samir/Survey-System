@@ -42,18 +42,15 @@ describe User do
   end
 
   describe "Behaviour" do
-
     it "should be an User object" do
       @user.should be_instance_of(User)
     end
-
     it "should save auth token with exact characters length" do
       @user[:auth_token].length.should == 22
     end
-    
     it "should return survey_id's array that user is watching" do
       @user.watching.should be_an(Array)
     end
-
   end
+
 end

@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Answer do
 
+  before :each do
+    @answer = Factory(:answer)
+  end
+
   context "requirements" do
     it { should have_db_column(:content).of_type(:string) }
   end
@@ -14,6 +18,12 @@ describe Answer do
   context "associations" do
     it { should have_many(:user_answers) }
     it { should belong_to(:question) }
+  end
+
+  describe "Behaviour" do
+    it "should be an Answer object" do
+      @answer.should be_instance_of(Answer)
+    end
   end
 
 end

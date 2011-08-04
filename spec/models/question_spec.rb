@@ -21,4 +21,10 @@ describe Question do
     it { should have_many(:user_answers) }
   end
 
+  describe "Behaviour" do
+    it "should be a Question object" do
+      @question.should be_instance_of(Question)
+    end
+  end
+
 end

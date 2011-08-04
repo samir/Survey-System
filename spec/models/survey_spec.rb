@@ -26,10 +26,13 @@ describe Survey do
     it { should have_many(:user_answers) }
   end
 
-
   describe "Behaviour" do
+    it "should be a Survey object" do
+      @survey.should be_instance_of(Survey)
+    end
     it "should return user_id's array that user is watching" do
       @survey.users_watching.should be_an(Array)
     end
   end
+
 end

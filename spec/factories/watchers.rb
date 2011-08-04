@@ -1,6 +1,8 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
-FactoryGirl.define do
-  factory :watcher do
-    end
+Factory.define :watcher do |w|
+  w.user_id 1
+  w.survey_id 1
+  # w.association :user
+  # w.association :survey
 end
+
+
