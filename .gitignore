@@ -6,3 +6,4 @@ tmp/
 public/uploads/**/*
 doc/README_FOR_APP
 .rvmrc
+coverage/*
