@@ -15,4 +15,10 @@ describe Question do
     it { should ensure_length_of(:content).is_at_least(1).is_at_most(511) }
   end
 
+  context "associations" do
+    it { should belong_to(:survey) }
+    it { should have_many(:answers) }
+    it { should have_many(:user_answers) }
+  end
+
 end

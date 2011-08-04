@@ -22,6 +22,13 @@ describe User do
     # it { should validate_uniqueness_of(:email).case_insensitive }
   end
 
+  context "associations" do
+    it { should have_many(:surveys) }
+    it { should have_many(:watchers) }
+    it { should have_many(:user_answers) }
+  end
+
+
   describe "The signup process", :type => :request do
     before :each do
       User.create!(:name => "User", :email => 'user@example.com', :password => 'caplin')

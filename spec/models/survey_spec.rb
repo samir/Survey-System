@@ -19,4 +19,17 @@ describe Survey do
     it { should ensure_length_of(:description).is_at_most(511) }
   end
 
+  context "associations" do
+    it { should belong_to(:user) }
+    it { should have_many(:questions) }
+    it { should have_many(:watchers) }
+    it { should have_many(:user_answers) }
+  end
+
+
+  describe "Behaviour" do
+    it "should return user_id's array that user is watching" do
+      @survey.users_watching.should be_an(Array)
+    end
+  end
 end
